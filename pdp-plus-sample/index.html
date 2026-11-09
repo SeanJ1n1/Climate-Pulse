@@ -3,188 +3,376 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Climate Pulse · PDP+ integration sample (unofficial demo)</title>
-  <meta name="description" content="Unofficial demo of Climate Pulse (PopIntel Track 1). Not production PDP+ and not hosted by UNFPA." />
+  <title>Population Data Portal (layout sample) · Climate Pulse · UNOFFICIAL DEMO</title>
+  <meta name="description" content="Unofficial layout-inspired demo mimicking PDP shell with Climate Pulse PopIntel Track 1 module. Not hosted by UNFPA." />
+  <meta name="robots" content="noindex,nofollow" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="banner" role="status">
+  <div class="demo-banner" role="alert">
     <span class="tag">UNOFFICIAL DEMO</span>
-    Sample page for Climate Pulse (PopIntel Track 1). Not production PDP+ and not hosted by UNFPA.
-    ArcGIS links are Owner-only (private AGOL account; login required).
+    <span>Layout inspired by <a href="https://pdp.unfpa.org/#/" target="_blank" rel="noopener">pdp.unfpa.org</a> · Climate Pulse PopIntel Track 1 sample · ArcGIS Owner-only · Not hosted by UNFPA · not production PDP</span>
   </div>
 
-  <header class="hero">
-    <div class="wrap">
-      <h1>Climate Pulse · PDP+ integration sample</h1>
-      <p>
-        PopIntel Hackathon Track 1. Climate-Demographic Risk Score uses prototype H×E×S weights,
-        shown next to existing Esri operational views.
-        Track wording: “integrated into PDP+ and country workflows.”
-        This page is an unofficial demo of that layout.
-      </p>
-      <div class="links">
-        <a class="btn btn-light" href="https://pdp.unfpa.org/" target="_blank" rel="noopener">Official PDP</a>
-        <a class="btn btn-ghost" href="https://pdp.unfpa.org/popInthackathon/" target="_blank" rel="noopener">PopIntel Hackathon</a>
-        <a class="btn btn-ghost" href="../docs/OFFICIAL_ALIGNMENT.md">Official alignment notes</a>
-        <a class="btn btn-ghost" href="../README.md">Open-source package README</a>
-      </div>
+  <header class="site-header">
+    <a class="brand" href="#/" data-nav="home" aria-label="Home">
+      <span class="brand-mark" aria-hidden="true">P</span>
+      <span class="brand-text">
+        <strong>Population Data Portal</strong>
+        <span>(layout sample)</span>
+      </span>
+      <span class="sample-pill">UNOFFICIAL SAMPLE</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Primary">
+      <a href="#/viewer" data-nav="viewer">Indicator viewer</a>
+      <a href="#/metadata" data-nav="metadata">Metadata</a>
+      <a href="#/visualizations" data-nav="visualizations">Visualizations</a>
+    </nav>
+
+    <div class="header-right">
+      <label class="chip" title="Decorative mock">
+        Regions
+        <select aria-label="Regions (mock)" tabindex="0">
+          <option>All regions</option>
+          <option>Africa</option>
+          <option>Asia</option>
+          <option>Latin America</option>
+        </select>
+      </label>
+      <a class="chip" href="https://pdp.unfpa.org/#/" target="_blank" rel="noopener">Open real PDP ↗</a>
     </div>
   </header>
 
-  <nav class="toc" aria-label="Sections">
-    <a href="#overview">Overview</a>
-    <a href="#method">Risk score</a>
-    <a href="#views">Operational views</a>
-    <a href="#arcgis">Open in ArcGIS</a>
-    <a href="#oss">Method &amp; code</a>
-    <a href="#gaps">Gaps</a>
-  </nav>
-
-  <main>
-    <section id="overview">
-      <h2>1. Country / track overview</h2>
-      <p class="muted">Primary country for Track 1 depth: <strong>Kenya (KEN)</strong>. Extended demos: Nigeria, Mexico, India (Multi4 dashboard).</p>
-      <div class="grid">
-        <div class="card">
-          <span class="pill ok">Primary</span>
-          <h4>Kenya</h4>
-          <p>ADM1/ADM2 risk layers, Stress dashboard, Experience Builder (Owner-only).</p>
+  <!-- View A: Home -->
+  <section id="view-home" class="view active" data-view="home">
+    <div class="home-hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <h1>Welcome to the Population Data Portal</h1>
+          <div class="search-shell" role="search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <input type="search" placeholder="Search by indicator or location" aria-label="Search (decorative)" />
+          </div>
+          <div class="entry-cards">
+            <button type="button" class="entry-card" data-go="viewer">
+              <span class="entry-icon blue" aria-hidden="true">▣</span>
+              <span><strong>Countries</strong><span>Explore data by country</span></span>
+              <span class="chev">›</span>
+            </button>
+            <button type="button" class="entry-card" data-go="viewer">
+              <span class="entry-icon orange" aria-hidden="true">◎</span>
+              <span><strong>Indicators</strong><span>Browse indicators by domain</span></span>
+              <span class="chev">›</span>
+            </button>
+            <button type="button" class="entry-card highlight" data-go="climate-pulse">
+              <span class="entry-icon pink" aria-hidden="true">◆</span>
+              <span><strong>Demographic Intelligence</strong><span>Explore emerging narratives · Climate Pulse sample (PopIntel Track 1)</span></span>
+              <span class="chev">›</span>
+            </button>
+          </div>
         </div>
-        <div class="card">
-          <span class="pill">Extended</span>
-          <h4>Nigeria</h4>
-          <p>Dashboard deployed; age-sex still national-share proxy.</p>
-        </div>
-        <div class="card">
-          <span class="pill">Extended</span>
-          <h4>Mexico</h4>
-          <p>Dashboard deployed; fertility-only DIOS when present.</p>
-        </div>
-        <div class="card">
-          <span class="pill">Extended</span>
-          <h4>India</h4>
-          <p>Dashboard deployed; short SPI reference; no DIOS on disk.</p>
+        <div class="globe-stage" aria-hidden="true">
+          <div class="globe-rings"></div>
+          <div class="globe-core">
+            <img src="assets/ke_adm1_risk_map.png" alt="" />
+            <div class="globe-ring-focus"></div>
+          </div>
+          <div class="globe-caption">Map stage · sample</div>
         </div>
       </div>
-      <h3>Official Track 1 components (verbatim)</h3>
-      <ul class="compact">
-        <li>Climate Risk Layer — EO datasets standardised into Admin-2 grid</li>
-        <li>Population Exposure Engine — WorldPop age-sex overlay</li>
-        <li>DIOS Early Signal Layer — 2–4 week displacement warning</li>
-        <li>Esri Operational Dashboard — ArcGIS Experience Builder</li>
-      </ul>
-      <p class="muted">Source: <a href="https://pdp.unfpa.org/popInthackathon/" target="_blank" rel="noopener">pdp.unfpa.org/popInthackathon</a></p>
-    </section>
+    </div>
 
-    <section id="method">
-      <h2>2. Climate-Demographic Risk Score (prototype)</h2>
-      <p>Prototype blend of hazard, exposure, and signal. Weights below. Details in <a href="../docs/METHOD.md">docs/METHOD.md</a>.</p>
-      <div class="formula">risk = 0.40·hazard + 0.35·exposure + 0.25·signal
+    <div class="kpi-section">
+      <div class="wrap">
+        <p class="kpi-label">Illustrative PDP home KPIs (public site)</p>
+        <div class="kpi-row">
+          <div class="kpi-card"><div class="k">World Population</div><div class="v">8.2B</div><div class="t">▾ 3.49% since 2020</div></div>
+          <div class="kpi-card"><div class="k">Maternal Mortality Ratio</div><div class="v">0.2%</div><div class="t">▾ 14% since 2014</div></div>
+          <div class="kpi-card"><div class="k">Contraceptive Prevalence Rate</div><div class="v">48.6%</div><div class="t">▾ 1.25% since 2014</div></div>
+          <div class="kpi-card"><div class="k">Total Fertility Rate</div><div class="v">2.25</div><div class="t">▾ 12.1% since 2014</div></div>
+          <div class="kpi-card"><div class="k">Adolescent Birth Rate</div><div class="v">3.8%</div><div class="t">▾ 22.2% since 2014</div></div>
+          <div class="kpi-card"><div class="k">Child Marriage 20–24 (before 18)</div><div class="v">18.6%</div><div class="t">▾ 15.1% since 2014</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="resources">
+      <div class="wrap">
+        <h2>More resources</h2>
+        <p>Sample cards — Climate Pulse opens the integrated module inside this unofficial shell.</p>
+        <div class="resource-grid">
+          <button type="button" class="resource-card featured" data-go="climate-pulse">
+            <div class="resource-thumb">
+              <img src="assets/ke_dashboard_overview.png" alt="" />
+              <span class="badge">SAMPLE</span>
+            </div>
+            <div class="resource-body">
+              <strong>Climate Pulse (PopIntel sample)</strong>
+              <span>Climate-Demographic Risk Score (H×E×S) · nested under Visualizations / country workflow · Owner-only ArcGIS</span>
+            </div>
+          </button>
+          <a class="resource-card" href="https://pdp.unfpa.org/#/visualizations" target="_blank" rel="noopener">
+            <div class="resource-thumb" style="background:linear-gradient(135deg,#d6eaf8,#e8f8ef)">
+              <span style="font-size:28px;color:#007ac2">◎</span>
+            </div>
+            <div class="resource-body">
+              <strong>Climate and SRHR Tracker</strong>
+              <span>See official PDP visualizations (external)</span>
+            </div>
+          </a>
+          <button type="button" class="resource-card" data-go="visualizations">
+            <div class="resource-thumb">
+              <img src="assets/ke_latest_month_scores.png" alt="" />
+            </div>
+            <div class="resource-body">
+              <strong>Interactive Visualizations</strong>
+              <span>Browse the sample visualizations grid</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="wrap foot-row">
+        <div>© sample · UNOFFICIAL DEMO · layout inspired by PDP · not hosted by UNFPA</div>
+        <div>
+          <a href="https://pdp.unfpa.org/" target="_blank" rel="noopener">pdp.unfpa.org</a>
+          ·
+          <a href="https://pdp.unfpa.org/popInthackathon/" target="_blank" rel="noopener">PopIntel Hackathon</a>
+        </div>
+      </div>
+    </footer>
+  </section>
+
+  <!-- View B: Indicator viewer -->
+  <section id="view-viewer" class="view" data-view="viewer">
+    <div class="viewer-layout">
+      <aside class="icon-rail" aria-label="Tools (decorative)">
+        <button type="button" class="active" title="Indicators">☰</button>
+        <button type="button" title="Layers">▤</button>
+        <button type="button" title="Bookmarks">☆</button>
+        <button type="button" title="Print">⎙</button>
+      </aside>
+      <aside class="viewer-side">
+        <div class="side-search">
+          <input type="search" placeholder="Search indicators" aria-label="Search indicators (decorative)" />
+          <button type="button" class="filters-btn">Filters</button>
+        </div>
+        <div class="accordion" aria-label="Domains">
+          <div class="acc-item">Age composition <span>›</span></div>
+          <div class="acc-item selected">Population <span>›</span></div>
+          <div class="acc-item">Demographic <span>›</span></div>
+          <div class="acc-item">Disability <span>›</span></div>
+          <div class="acc-item">Fertility <span>›</span></div>
+          <div class="acc-item">Household characteristics <span>›</span></div>
+          <div class="acc-item">Migration <span>›</span></div>
+          <div class="acc-item">Urbanization <span>›</span></div>
+        </div>
+        <div class="country-block">
+          <h3>Countries</h3>
+          <ul class="country-list" id="country-list">
+            <li><button type="button" class="active" data-country="kenya"><span class="dot"></span>Kenya (primary)</button></li>
+            <li><button type="button" data-country="nigeria"><span class="dot"></span>Nigeria</button></li>
+            <li><button type="button" data-country="mexico"><span class="dot"></span>Mexico</button></li>
+            <li><button type="button" data-country="india"><span class="dot"></span>India</button></li>
+          </ul>
+        </div>
+      </aside>
+      <div class="viewer-main">
+        <div class="map-controls" aria-hidden="true">
+          <button type="button">+</button>
+          <button type="button">−</button>
+          <button type="button">◎</button>
+        </div>
+        <div class="map-stage" id="map-stage">
+          <img id="map-img" src="assets/ke_adm1_risk_map.png" alt="Kenya ADM1 climate-demographic risk preview" />
+        </div>
+        <div class="float-panel" id="float-panel">
+          <h3 id="float-title">Kenya</h3>
+          <p id="float-desc">Primary Track 1 country. Local risk-map preview; live ArcGIS views are Owner-only.</p>
+          <div class="btn-row">
+            <button type="button" class="btn btn-primary" id="float-cp-cta" data-go="climate-pulse">Open Climate Pulse operational view</button>
+            <a class="btn btn-secondary" id="float-arcgis" href="https://africageoportal.maps.arcgis.com/apps/dashboards/d1fd5155dc8c49c5b3873671fedc4c29" target="_blank" rel="noopener">Open ArcGIS</a>
+          </div>
+        </div>
+        <div class="map-attrib">Preview · sample assets · not live Esri map</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- View C: Climate Pulse -->
+  <section id="view-climate-pulse" class="view" data-view="climate-pulse">
+    <div class="cp-page">
+      <div class="wrap">
+        <div class="breadcrumb">
+          <a href="#/" data-nav="home">Home</a> /
+          <a href="#/visualizations" data-nav="visualizations">Visualizations</a> /
+          <strong>Climate Pulse</strong>
+        </div>
+        <p class="insert-note">Inserted as a Visualizations / country-workflow module — not a top-level PDP product.</p>
+        <h1>Climate-Demographic Risk Score (H×E×S) · PopIntel Track 1</h1>
+        <p class="cp-lede">
+          Unofficial sample module framed inside a PDP-like shell (reached from Visualizations, Demographic Intelligence, or Kenya Indicator viewer). Prototype fusion of climate hazard,
+          population exposure, and a weak DIOS / climate-mode signal for Kenya (primary) plus NGA / MEX / IND demos.
+        </p>
+        <div class="formula">risk = 0.40·hazard + 0.35·exposure + 0.25·signal
 signal (when DIOS present) = 0.70·DIOS_media + 0.30·climate_modes</div>
-      <p class="muted" style="margin-top:12px">Hazard from CHIRPS SPI-3; exposure from WorldPop (age-sex where available); signal from a DIOS media inventory and/or climate modes.</p>
-      <div class="note-box">
-        Official DIOS wording is a 2–4 week displacement warning. Here DIOS is a media early-signal layer. Displacement precision/recall is not evaluable in this package (no gold displacement label).
+        <div class="note">
+          Association ≠ causation. DIOS here is a media early-signal layer — not a gold-standard displacement Y for 2–4 week P/R.
+          ArcGIS apps linked below are Owner-only on Africa GeoPortal.
+        </div>
+
+        <div class="status-row">
+          <div class="status-card">
+            <span class="pill pill-ok">Primary</span>
+            <strong>Kenya depth</strong>
+            <span>ADM risk layers · Stress dashboard · Experience Builder</span>
+          </div>
+          <div class="status-card">
+            <span class="pill pill-warn">Owner-only</span>
+            <strong>ArcGIS operational views</strong>
+            <span>Dashboards / Experience require GeoPortal login</span>
+          </div>
+          <div class="status-card">
+            <span class="pill pill-info">Sample integration</span>
+            <strong>PDP+ write</strong>
+            <span>This page only — no production PDP write access</span>
+          </div>
+        </div>
+
+        <h2 class="section-title">Operational views</h2>
+        <div class="op-grid" id="op-grid"></div>
+
+        <h2 class="section-title">Local Kenya previews</h2>
+        <div class="preview-grid">
+          <figure>
+            <img src="assets/ke_dashboard_overview.png" alt="Kenya Climate Pulse dashboard overview" />
+            <figcaption>Dashboard overview (local screenshot)</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/ke_adm1_risk_map.png" alt="Kenya ADM1 risk map" />
+            <figcaption>ADM1 risk map preview</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/ke_latest_month_scores.png" alt="Kenya latest month scores" />
+            <figcaption>Latest-month county scores</figcaption>
+          </figure>
+        </div>
+
+        <h2 class="section-title">Live embed attempt (Kenya Dashboard)</h2>
+        <div class="embed-box">
+          <iframe title="Kenya Climate Pulse Dashboard"
+            src="https://africageoportal.maps.arcgis.com/apps/dashboards/d1fd5155dc8c49c5b3873671fedc4c29"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="embed-note">
+            Embeds often stay blank. Fallback:
+            <a href="https://africageoportal.maps.arcgis.com/apps/dashboards/d1fd5155dc8c49c5b3873671fedc4c29" target="_blank" rel="noopener">Open Kenya Dashboard</a>
+            (Owner-only).
+          </div>
+        </div>
+
+        <h2 class="section-title">Gaps / limitations</h2>
+        <table class="gaps">
+          <thead>
+            <tr><th>Item</th><th>Status</th><th>Note</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Country pilot active</td><td><span class="pill pill-gap">Not done</span></td><td>Needs UNFPA / country office</td></tr>
+            <tr><td>Real PDP+ write</td><td><span class="pill pill-gap">Not done</span></td><td>No platform write access; this sample only</td></tr>
+            <tr><td>Multi-country Experience</td><td><span class="pill pill-gap">Blocked</span></td><td>experience.arcgis.com timeouts historically</td></tr>
+            <tr><td>DIOS displacement P/R</td><td><span class="pill pill-gap">Not evaluable</span></td><td>No gold displacement Y</td></tr>
+            <tr><td>Non-KEN WorldPop age-sex</td><td><span class="pill pill-warn">Partial</span></td><td>NGA/MEX/IND still national-share proxy</td></tr>
+            <tr><td>Repo Public + Pages</td><td><span class="pill pill-warn">User action</span></td><td>Climate-Pulse still private until you flip settings</td></tr>
+          </tbody>
+        </table>
+
+        <h2 class="section-title">Method &amp; package links</h2>
+        <div class="doc-links">
+          <a class="btn btn-secondary" href="../docs/OFFICIAL_ALIGNMENT.md">OFFICIAL_ALIGNMENT.md</a>
+          <a class="btn btn-secondary" href="../docs/METHOD.md">METHOD.md</a>
+          <a class="btn btn-secondary" href="../docs/ARCGIS_ITEMS.md">ARCGIS_ITEMS.md</a>
+          <a class="btn btn-secondary" href="../README.md">Package README</a>
+          <a class="btn btn-blue" href="https://pdp.unfpa.org/popInthackathon/" target="_blank" rel="noopener">PopIntel Track 1</a>
+        </div>
       </div>
-    </section>
-
-    <section id="views">
-      <h2>3. Operational views (preview + deep links)</h2>
-      <p class="muted">Local map previews ship with this demo. Live Esri apps may refuse iframe embedding and require Owner login — use the cards in section 4 if embeds are blank.</p>
-      <div class="preview-grid">
-        <figure>
-          <img class="preview" src="assets/ke_dashboard_overview.png" alt="Kenya Climate Pulse dashboard overview screenshot" />
-          <figcaption class="muted">Kenya dashboard overview (local screenshot)</figcaption>
-        </figure>
-        <figure>
-          <img class="preview" src="assets/ke_adm1_risk_map.png" alt="Kenya ADM1 climate-demographic risk map" />
-          <figcaption class="muted">Kenya ADM1 risk map preview</figcaption>
-        </figure>
-        <figure>
-          <img class="preview" src="assets/ke_latest_month_scores.png" alt="Kenya latest month county scores map" />
-          <figcaption class="muted">Kenya latest-month county scores</figcaption>
-        </figure>
+    </div>
+    <footer class="site-footer">
+      <div class="wrap foot-row">
+        <div>© sample · Climate Pulse · UNOFFICIAL DEMO</div>
+        <div>
+          <a href="https://pdp.unfpa.org/" target="_blank" rel="noopener">pdp.unfpa.org</a>
+          ·
+          <a href="https://pdp.unfpa.org/popInthackathon/" target="_blank" rel="noopener">Hackathon</a>
+        </div>
       </div>
-      <h3>Attempted live embed (Kenya Dashboard)</h3>
-      <iframe class="mapframe" title="Kenya Climate Pulse Dashboard"
-        src="https://africageoportal.maps.arcgis.com/apps/dashboards/d1fd5155dc8c49c5b3873671fedc4c29"
-        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      <p class="muted">If blank: open via <a href="https://africageoportal.maps.arcgis.com/apps/dashboards/d1fd5155dc8c49c5b3873671fedc4c29" target="_blank" rel="noopener">Open Kenya Dashboard</a> (Owner-only).</p>
-    </section>
+    </footer>
+  </section>
 
-    <section id="arcgis">
-      <h2>4. Open in ArcGIS</h2>
-      <p class="muted">Owner-only ArcGIS items (private AGOL account). Login required.</p>
-      <div class="grid" id="arcgis-cards"></div>
-    </section>
+  <!-- View D: Visualizations -->
+  <section id="view-visualizations" class="view" data-view="visualizations">
+    <div class="viz-page">
+      <div class="wrap">
+        <div class="breadcrumb"><a href="#/" data-nav="home">Home</a> / Visualizations</div>
+        <h1>Interactive Visualizations</h1>
+        <p class="intro">Sample grid inspired by the official PDP visualizations page. Climate tools sit here as cards — Climate Pulse (PopIntel sample) opens the in-shell module; Climate and SRHR Tracker / Flood Risk point to the real portal.</p>
+        <div class="viz-toolbar">
+          <div class="search-shell">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <input type="search" placeholder="Search by keyword" aria-label="Search visualizations (decorative)" />
+          </div>
+          <button type="button" class="chip">Most recent</button>
+        </div>
+        <div class="viz-grid">
+          <button type="button" class="resource-card featured" data-go="climate-pulse">
+            <div class="resource-thumb">
+              <img src="assets/ke_dashboard_overview.png" alt="" />
+              <span class="badge">SAMPLE</span>
+            </div>
+            <div class="resource-body">
+              <strong>Climate Pulse (PopIntel sample)</strong>
+              <span>H×E×S risk score · Kenya primary · Owner-only ArcGIS · opens in-shell module</span>
+            </div>
+          </button>
+          <a class="resource-card" href="https://pdp.unfpa.org/#/visualizations" target="_blank" rel="noopener">
+            <div class="resource-thumb" style="background:linear-gradient(135deg,#cfe8f7,#d9f2e5)">
+              <span style="font-size:26px;color:#007ac2">Climate · SRHR</span>
+            </div>
+            <div class="resource-body">
+              <strong>Climate and SRHR Tracker</strong>
+              <span>See official PDP visualizations</span>
+            </div>
+          </a>
+          <a class="resource-card" href="https://pdp.unfpa.org/#/visualizations" target="_blank" rel="noopener">
+            <div class="resource-thumb" style="background:linear-gradient(135deg,#e3eef8,#fde8d8)">
+              <span style="font-size:26px;color:#ED6A1F">Flood risk</span>
+            </div>
+            <div class="resource-body">
+              <strong>Climate Change and Flood Risk</strong>
+              <span>See official PDP visualizations</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <footer class="site-footer">
+      <div class="wrap foot-row">
+        <div>© sample · UNOFFICIAL DEMO</div>
+        <div><a href="https://pdp.unfpa.org/#/visualizations" target="_blank" rel="noopener">Official visualizations</a></div>
+      </div>
+    </footer>
+  </section>
 
-    <section id="oss">
-      <h2>5. Open-source &amp; methodology</h2>
-      <ul class="compact">
-        <li><a href="../README.md">Package README</a> — license, reproduce steps, exclusions</li>
-        <li><a href="../docs/METHOD.md">METHOD.md</a> — H×E×S weights</li>
-        <li><a href="../docs/OFFICIAL_ALIGNMENT.md">OFFICIAL_ALIGNMENT.md</a> — web-verified gap table</li>
-        <li><a href="../docs/ARCGIS_ITEMS.md">ARCGIS_ITEMS.md</a> — URL inventory</li>
-        <li><a href="../scripts/build_climate_pulse_layers.py">Kenya builder script</a> · <a href="../scripts/build_climate_pulse_country.py">Multi-country builder</a></li>
-        <li><a href="../examples/kenya_adm1_risk_sample_10.csv">Example Kenya ADM1 sample CSV</a></li>
-      </ul>
-    </section>
-
-    <section id="gaps">
-      <h2>6. Gaps</h2>
-      <table class="simple">
-        <thead>
-          <tr><th>Item</th><th>Status</th><th>Why</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Code open-sourced (package)</td>
-            <td><span class="pill ok">This package ready</span></td>
-            <td>Package files are in this repository. A public listing depends on repository visibility</td>
-          </tr>
-          <tr>
-            <td>Sample PDP+ integration page</td>
-            <td><span class="pill ok">This page</span></td>
-            <td>Demo only — real PDP+ write access needs UNFPA platform</td>
-          </tr>
-          <tr>
-            <td>Esri dashboard deployed</td>
-            <td><span class="pill ok">Done (Owner-only)</span></td>
-            <td>Private Africa GeoPortal apps</td>
-          </tr>
-          <tr>
-            <td>Country pilot active</td>
-            <td><span class="pill gap">Not done</span></td>
-            <td>Needs UNFPA / country office participation and evidence</td>
-          </tr>
-          <tr>
-            <td>Multi-country Experience Builder</td>
-            <td><span class="pill gap">Blocked</span></td>
-            <td>experience.arcgis.com site_error / timeouts historically</td>
-          </tr>
-          <tr>
-            <td>DIOS as measurable 2–4w displacement warning</td>
-            <td><span class="pill gap">Not evaluable</span></td>
-            <td>No gold displacement Y for P/R</td>
-          </tr>
-          <tr>
-            <td>Non-KEN true WorldPop age-sex overlay</td>
-            <td><span class="pill warn">Partial</span></td>
-            <td>NGA/MEX/IND still national-share proxy; large raster downloads left</td>
-          </tr>
-          <tr>
-            <td>Email ~60% precision</td>
-            <td><span class="pill warn">Unverified</span></td>
-            <td>Not found on public web (2026-11-09)</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-  </main>
-
-  <footer>
-    Climate Pulse · PopIntel Track 1 · MIT · Unofficial demo, not an UNFPA product.
-  </footer>
+  <!-- Metadata stub -->
+  <section id="view-metadata" class="view" data-view="metadata">
+    <div class="meta-page wrap">
+      <div class="breadcrumb" style="text-align:left"><a href="#/" data-nav="home">Home</a> / Metadata</div>
+      <h1>Metadata</h1>
+      <p>Stub view in this unofficial sample. Use the real PDP for indicator metadata.</p>
+      <p><a class="btn btn-primary" href="https://pdp.unfpa.org/#/" target="_blank" rel="noopener">Open real PDP</a></p>
+    </div>
+  </section>
 
   <script src="app.js"></script>
 </body>
