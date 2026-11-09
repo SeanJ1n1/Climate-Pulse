@@ -1,0 +1,6 @@
+adm1_key,adm1_name,month,climate_demographic_risk_score,hazard_score,exposure_score,signal_score,spi_3,pop_total,estimated,note
+demo_north,Demo North,2026-09,72.5,80.0,70.0,60.0,-2.1,100000,true,SYNTHETIC smoke-test stub; not real geography
+demo_east,Demo East,2026-09,55.0,40.0,65.0,70.0,-0.8,250000,true,SYNTHETIC smoke-test stub; not real geography
+demo_south,Demo South,2026-09,38.2,20.0,50.0,55.0,0.5,180000,true,SYNTHETIC smoke-test stub; not real geography
+demo_west,Demo West,2026-09,61.1,65.0,58.0,58.0,-1.5,90000,true,SYNTHETIC smoke-test stub; not real geography
+demo_central,Demo Central,2026-09,44.8,35.0,72.0,25.0,-0.3,400000,true,SYNTHETIC smoke-test stub; not real geography

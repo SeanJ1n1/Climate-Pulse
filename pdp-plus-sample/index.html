@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Climate Pulse · PDP+ integration sample (unofficial demo)</title>
+  <meta name="description" content="Unofficial team demo: how PopIntel Track 1 Climate Pulse could appear beside PDP+ country workflows. Not hosted by UNFPA." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="banner" role="alert">
+    <span class="tag">UNOFFICIAL DEMO</span>
+    <strong>This is a team demo</strong> showing how Track 1 Climate Pulse could appear beside PDP+ country workflows.
+    It is <strong>not</strong> hosted by UNFPA and is <strong>not</strong> the Production Population Data Portal.
+    ArcGIS cards below are Owner-only links from Xin Jin’s Africa GeoPortal account.
+  </div>
+
+  <header class="hero">
+    <div class="wrap">
+      <h1>Climate Pulse · PDP+ integration sample</h1>
+      <p>
+        PopIntel Hackathon Track 1 — Climate-Demographic Risk Score (prototype H×E×S),
+        wired to existing Esri operational views. Official requirement language:
+        “integrated into PDP+ and country workflows.” This page is a <em>sample</em> of that intent only.
+      </p>
+      <div class="links">
+        <a class="btn btn-light" href="https://pdp.unfpa.org/" target="_blank" rel="noopener">Official PDP</a>
+        <a class="btn btn-ghost" href="https://pdp.unfpa.org/popInthackathon/" target="_blank" rel="noopener">PopIntel Hackathon</a>
+        <a class="btn btn-ghost" href="../docs/OFFICIAL_ALIGNMENT.md">Official alignment notes</a>
+        <a class="btn btn-ghost" href="../README.md">Open-source package README</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Sections">
+    <a href="#overview">Overview</a>
+    <a href="#method">Risk score</a>
+    <a href="#views">Operational views</a>
+    <a href="#arcgis">Open in ArcGIS</a>
+    <a href="#oss">Method &amp; code</a>
+    <a href="#gaps">Gaps / limitations</a>
+  </nav>
+
+  <main>
+    <section id="overview">
+      <h2>1. Country / track overview</h2>
+      <p class="muted">Primary country for Track 1 depth: <strong>Kenya (KEN)</strong>. Extended demos: Nigeria, Mexico, India (Multi4 dashboard).</p>
+      <div class="grid">
+        <div class="card">
+          <span class="pill ok">Primary</span>
+          <h4>Kenya</h4>
+          <p>ADM1/ADM2 risk layers, Stress dashboard, Experience Builder (Owner-only).</p>
+        </div>
+        <div class="card">
+          <span class="pill">Extended</span>
+          <h4>Nigeria</h4>
+          <p>Dashboard deployed; age-sex still national-share proxy.</p>
+        </div>
+        <div class="card">
+          <span class="pill">Extended</span>
+          <h4>Mexico</h4>
+          <p>Dashboard deployed; fertility-only DIOS when present.</p>
+        </div>
+        <div class="card">
+          <span class="pill">Extended</span>
+          <h4>India</h4>
+          <p>Dashboard deployed; short SPI reference; no DIOS on disk.</p>
+        </div>
+      </div>
+      <h3>Official Track 1 components (verbatim)</h3>
+      <ul class="compact">
+        <li>Climate Risk Layer — EO datasets standardised into Admin-2 grid</li>
+        <li>Population Exposure Engine — WorldPop age-sex overlay</li>
+        <li>DIOS Early Signal Layer — 2–4 week displacement warning</li>
+        <li>Esri Operational Dashboard — ArcGIS Experience Builder</li>
+      </ul>
+      <p class="muted">Source: <a href="https://pdp.unfpa.org/popInthackathon/" target="_blank" rel="noopener">pdp.unfpa.org/popInthackathon</a></p>
+    </section>
+
+    <section id="method">
+      <h2>2. Climate-Demographic Risk Score (prototype)</h2>
+      <p>Association / fusion score for operational discussion — <strong>not</strong> a validated displacement probability.</p>
+      <div class="formula">risk = 0.40·hazard + 0.35·exposure + 0.25·signal
+signal (when DIOS present) = 0.70·DIOS_media + 0.30·climate_modes</div>
+      <p class="muted" style="margin-top:12px">Hazard from CHIRPS SPI-3; exposure from WorldPop (+ age-sex where available); signal from DIOS media inventory and/or climate modes. See <a href="../docs/METHOD.md">docs/METHOD.md</a>.</p>
+      <div class="note-box">
+        Official DIOS wording is a <strong>2–4 week displacement warning</strong>. Current DIOS use here is a <strong>media early-signal layer</strong>; displacement P/R is not yet evaluable (no gold Y). Do not claim proven lead time.
+      </div>
+    </section>
+
+    <section id="views">
+      <h2>3. Operational views (preview + deep links)</h2>
+      <p class="muted">Local map previews ship with this demo. Live Esri apps may refuse iframe embedding and require Owner login — use the cards in section 4 if embeds are blank.</p>
+      <div class="preview-grid">
+        <figure>
+          <img class="preview" src="assets/ke_dashboard_overview.png" alt="Kenya Climate Pulse dashboard overview screenshot" />
+          <figcaption class="muted">Kenya dashboard overview (local screenshot)</figcaption>
+        </figure>
+        <figure>
+          <img class="preview" src="assets/ke_adm1_risk_map.png" alt="Kenya ADM1 climate-demographic risk map" />
+          <figcaption class="muted">Kenya ADM1 risk map preview</figcaption>
+        </figure>
+        <figure>
+          <img class="preview" src="assets/ke_latest_month_scores.png" alt="Kenya latest month county scores map" />
+          <figcaption class="muted">Kenya latest-month county scores</figcaption>
+        </figure>
+      </div>
+      <h3>Attempted live embed (Kenya Dashboard)</h3>
+      <iframe class="mapframe" title="Kenya Climate Pulse Dashboard"
+        src="https://africageoportal.maps.arcgis.com/apps/dashboards/d1fd5155dc8c49c5b3873671fedc4c29"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <p class="muted">If blank: open via <a href="https://africageoportal.maps.arcgis.com/apps/dashboards/d1fd5155dc8c49c5b3873671fedc4c29" target="_blank" rel="noopener">Open Kenya Dashboard</a> (Owner-only).</p>
+    </section>
+
+    <section id="arcgis">
+      <h2>4. Open in ArcGIS</h2>
+      <p class="muted">All links Owner-only unless sharing is later changed. Credit: Xin Jin / Africa GeoPortal.</p>
+      <div class="grid" id="arcgis-cards"></div>
+    </section>
+
+    <section id="oss">
+      <h2>5. Open-source &amp; methodology</h2>
+      <ul class="compact">
+        <li><a href="../README.md">Package README</a> — license, reproduce steps, exclusions</li>
+        <li><a href="../docs/METHOD.md">METHOD.md</a> — H×E×S weights &amp; claim boundaries</li>
+        <li><a href="../docs/OFFICIAL_ALIGNMENT.md">OFFICIAL_ALIGNMENT.md</a> — web-verified gap table</li>
+        <li><a href="../docs/ARCGIS_ITEMS.md">ARCGIS_ITEMS.md</a> — URL inventory</li>
+        <li><a href="../scripts/build_climate_pulse_layers.py">Kenya builder script</a> · <a href="../scripts/build_climate_pulse_country.py">Multi-country builder</a></li>
+        <li><a href="../examples/kenya_adm1_risk_sample_10.csv">Example Kenya ADM1 sample CSV</a></li>
+      </ul>
+    </section>
+
+    <section id="gaps">
+      <h2>6. Gaps / limitations (honest)</h2>
+      <table class="simple">
+        <thead>
+          <tr><th>Item</th><th>Status</th><th>Why</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Code open-sourced (package)</td>
+            <td><span class="pill ok">This package ready</span></td>
+            <td>Public GitHub push still needs user to connect GitHub + create repo URL</td>
+          </tr>
+          <tr>
+            <td>Sample PDP+ integration page</td>
+            <td><span class="pill ok">This page</span></td>
+            <td>Demo only — real PDP+ write access needs UNFPA platform</td>
+          </tr>
+          <tr>
+            <td>Esri dashboard deployed</td>
+            <td><span class="pill ok">Done (Owner-only)</span></td>
+            <td>Private Africa GeoPortal apps</td>
+          </tr>
+          <tr>
+            <td>Country pilot active</td>
+            <td><span class="pill gap">Not done</span></td>
+            <td>Needs UNFPA / country office engagement — cannot fake</td>
+          </tr>
+          <tr>
+            <td>Multi-country Experience Builder</td>
+            <td><span class="pill gap">Blocked</span></td>
+            <td>experience.arcgis.com site_error / timeouts historically</td>
+          </tr>
+          <tr>
+            <td>DIOS as measurable 2–4w displacement warning</td>
+            <td><span class="pill gap">Not evaluable</span></td>
+            <td>No gold displacement Y for P/R</td>
+          </tr>
+          <tr>
+            <td>Non-KEN true WorldPop age-sex overlay</td>
+            <td><span class="pill warn">Partial</span></td>
+            <td>NGA/MEX/IND still national-share proxy; large raster downloads left</td>
+          </tr>
+          <tr>
+            <td>Email ~60% precision</td>
+            <td><span class="pill warn">Unverified</span></td>
+            <td>Not found on public web (2026-11-09)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    Climate Pulse team demo · PopIntel Track 1 · MIT package under parent folder ·
+    Not an official UNFPA product. Generated for local / static hosting (file:// or GitHub Pages).
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+.env.*
+
+# Credentials / tokens
+*.pem
+*.key
+credentials*
+*token*
+*secret*
+.arcgis/
+agol_*.json
+*.ags
+
+# Large / restricted data (not shipped in this OSS package)
+raw/
+data_cache/
+downloads/
+data/features/*.nc
+data/features/chirps_iri/
+track1_data/worldpop/*.tif
+*.tif
+*.nc
+*.parquet
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Build artifacts
+outputs/
+*.zip
+!climate_pulse_oss_v1.zip
