@@ -116,7 +116,7 @@
       "verbatim": "Climate-Demographic Risk Score at Admin-2",
       "current": "有 H×E×S 合成分与 Stress 层（演示权重）；主要可交付为 ADM1/部分 ADM2",
       "status": "部分满足",
-      "gap": "分数为原型加权，不得标概率；Admin-2 完整独立评分未全覆盖"
+      "gap": "原型 H×E×S 加权；Admin-2 完整独立评分未全覆盖"
     },
     {
       "id": 6,
@@ -124,7 +124,7 @@
       "source_url": "https://pdp.unfpa.org/popInthackathon/",
       "requirement": "Esri dashboard deployed",
       "verbatim": "Esri dashboard deployed",
-      "current": "多套 Owner-only Dashboard 已部署（Xin Jin）",
+      "current": "多套 Owner-only Dashboard 已部署（私人 AGOL 账号）",
       "status": "已满足",
       "gap": "仍为私人部署；公开/国家办可见部署需另定分享"
     },
@@ -166,7 +166,7 @@
       "verbatim": "公开网页未找到；此前二次摘要称：county lead weeks、P/R、≈2–4 weeks 且 precision≈60%、精度够时优先 recall、无固定硬门槛",
       "current": "NDMA 代理窗有 P/R；位移全国 P/R=NOT_ELIGIBLE；lead_weeks_claim=false",
       "status": "来源未核实",
-      "gap": "2026-11-09 检索：官网与 Esri 博文均无 precision≈60%/recall-first 原文；邮箱原件此前亦未获。不得当硬门槛，需你提供邮件原文才能升格"
+      "gap": "2026-11-09 检索：官网与 Esri 博文均无 precision≈60% / recall-first 原文。未当作交付门槛"
     }
   ],
   "live_links_owner_only_note": "Links document current private deploy status; not official public requirements.",

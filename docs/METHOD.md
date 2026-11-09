@@ -1,6 +1,6 @@
 # Method — Climate-Demographic Risk Score (prototype)
 
-> **Claim boundary:** These are **prototype demonstration weights**, not calibrated probabilities, not causal effects, and not a validated 2–4 week **displacement** warning.
+Prototype H×E×S weights. Component scores are scaled to approximately 0–100 before blending. Displacement precision/recall is not in this package (no gold displacement label).
 
 ## Composite
 
@@ -10,8 +10,6 @@ climate_demographic_risk_score =
   + 0.35 * exposure_score
   + 0.25 * signal_score
 ```
-
-All component scores are scaled to approximately 0–100 before blending.
 
 ## Hazard (Climate Risk Layer)
 
@@ -23,7 +21,7 @@ All component scores are scaled to approximately 0–100 before blending.
 - WorldPop 2020 1km Aggregated UNadj zonal population where available.
 - Vulnerable proxy: children 0–14 + women 15–49 + older 65+.
 - **Kenya (scientific path):** spatial age-sex where WorldPop age-sex rasters were processed.
-- **NGA / MEX / IND (current builders):** national age-sex **shares** × zonal totals (`estimated_age_sex=true`) — **not** a full WorldPop age-sex overlay.
+- **NGA / MEX / IND (current builders):** national age-sex **shares** × zonal totals (`estimated_age_sex=true`). That is not a full WorldPop age-sex overlay.
 
 ## Signal (DIOS Early Signal Layer — media proxy)
 
@@ -33,20 +31,20 @@ When a DIOS article inventory is present:
 signal_score = 0.70 * signal_dios + 0.30 * signal_modes
 ```
 
-- `signal_dios`: county/ADM1 media surge vs baseline (article counts) — **signal input, never supervised Y**.
+- `signal_dios`: county/ADM1 media surge vs baseline (article counts). Media-count input, not a supervised label.
 - `signal_modes`: national climate-mode anomaly (e.g. ONI/DMI-derived modes score).
 
-When DIOS is absent: modes-only (`dios_available=false`). Topic inventories are never invented (fertility-only stays fertility-only).
+When DIOS is absent: modes-only (`dios_available=false`). Topic inventories are not filled in (fertility-only stays fertility-only).
 
-## What this is not
+## Scope
 
-| Claim | Status |
+| Item | In this package |
 |---|---|
-| Association / fusion score for ops discussion | Yes (prototype) |
-| Validated displacement probability | No |
-| Measurable 2–4 week displacement warning P/R | No (no gold Y established) |
+| Prototype H×E×S blend for the operational layers | Yes |
+| Calibrated displacement probability | No |
+| Measured 2–4 week displacement warning (precision/recall) | No — no gold displacement label |
 | Official UNFPA PDP+ production layer | No |
-| Email ~60% precision threshold | Not found on public web (2026-11-09); not used as a hard gate here |
+| Email ~60% precision threshold | Not on the public track page (checked 2026-11-09); not used as a gate |
 
 ## References in this package
 

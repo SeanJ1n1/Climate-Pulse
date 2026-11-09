@@ -1,8 +1,8 @@
 # ArcGIS items (Owner-only)
 
-**Disclaimer:** These URLs document Xin Jin’s **private / Owner-only** Africa GeoPortal deployments for Climate Pulse. They are **not** public UNFPA PDP+ pages. Opening them usually requires Xin Jin’s ArcGIS Online login. Sharing policy is a user constraint, not an official hackathon public requirement.
+Owner-only ArcGIS items on a private Africa GeoPortal account. Login is required. These URLs are not UNFPA PDP+ pages.
 
-Official track page: https://pdp.unfpa.org/popInthackathon/
+Track page: https://pdp.unfpa.org/popInthackathon/
 
 ## Dashboards & Experience
 

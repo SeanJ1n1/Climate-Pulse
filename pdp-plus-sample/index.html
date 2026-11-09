@@ -4,24 +4,24 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Climate Pulse · PDP+ integration sample (unofficial demo)</title>
-  <meta name="description" content="Unofficial team demo: how PopIntel Track 1 Climate Pulse could appear beside PDP+ country workflows. Not hosted by UNFPA." />
+  <meta name="description" content="Unofficial demo of Climate Pulse (PopIntel Track 1). Not production PDP+ and not hosted by UNFPA." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="banner" role="alert">
+  <div class="banner" role="status">
     <span class="tag">UNOFFICIAL DEMO</span>
-    <strong>This is a team demo</strong> showing how Track 1 Climate Pulse could appear beside PDP+ country workflows.
-    It is <strong>not</strong> hosted by UNFPA and is <strong>not</strong> the Production Population Data Portal.
-    ArcGIS cards below are Owner-only links from Xin Jin’s Africa GeoPortal account.
+    Sample page for Climate Pulse (PopIntel Track 1). Not production PDP+ and not hosted by UNFPA.
+    ArcGIS links are Owner-only (private AGOL account; login required).
   </div>
 
   <header class="hero">
     <div class="wrap">
       <h1>Climate Pulse · PDP+ integration sample</h1>
       <p>
-        PopIntel Hackathon Track 1 — Climate-Demographic Risk Score (prototype H×E×S),
-        wired to existing Esri operational views. Official requirement language:
-        “integrated into PDP+ and country workflows.” This page is a <em>sample</em> of that intent only.
+        PopIntel Hackathon Track 1. Climate-Demographic Risk Score uses prototype H×E×S weights,
+        shown next to existing Esri operational views.
+        Track wording: “integrated into PDP+ and country workflows.”
+        This page is an unofficial demo of that layout.
       </p>
       <div class="links">
         <a class="btn btn-light" href="https://pdp.unfpa.org/" target="_blank" rel="noopener">Official PDP</a>
@@ -38,7 +38,7 @@
     <a href="#views">Operational views</a>
     <a href="#arcgis">Open in ArcGIS</a>
     <a href="#oss">Method &amp; code</a>
-    <a href="#gaps">Gaps / limitations</a>
+    <a href="#gaps">Gaps</a>
   </nav>
 
   <main>
@@ -79,12 +79,12 @@
 
     <section id="method">
       <h2>2. Climate-Demographic Risk Score (prototype)</h2>
-      <p>Association / fusion score for operational discussion — <strong>not</strong> a validated displacement probability.</p>
+      <p>Prototype blend of hazard, exposure, and signal. Weights below. Details in <a href="../docs/METHOD.md">docs/METHOD.md</a>.</p>
       <div class="formula">risk = 0.40·hazard + 0.35·exposure + 0.25·signal
 signal (when DIOS present) = 0.70·DIOS_media + 0.30·climate_modes</div>
-      <p class="muted" style="margin-top:12px">Hazard from CHIRPS SPI-3; exposure from WorldPop (+ age-sex where available); signal from DIOS media inventory and/or climate modes. See <a href="../docs/METHOD.md">docs/METHOD.md</a>.</p>
+      <p class="muted" style="margin-top:12px">Hazard from CHIRPS SPI-3; exposure from WorldPop (age-sex where available); signal from a DIOS media inventory and/or climate modes.</p>
       <div class="note-box">
-        Official DIOS wording is a <strong>2–4 week displacement warning</strong>. Current DIOS use here is a <strong>media early-signal layer</strong>; displacement P/R is not yet evaluable (no gold Y). Do not claim proven lead time.
+        Official DIOS wording is a 2–4 week displacement warning. Here DIOS is a media early-signal layer. Displacement precision/recall is not evaluable in this package (no gold displacement label).
       </div>
     </section>
 
@@ -114,7 +114,7 @@ signal (when DIOS present) = 0.70·DIOS_media + 0.30·climate_modes</div>
 
     <section id="arcgis">
       <h2>4. Open in ArcGIS</h2>
-      <p class="muted">All links Owner-only unless sharing is later changed. Credit: Xin Jin / Africa GeoPortal.</p>
+      <p class="muted">Owner-only ArcGIS items (private AGOL account). Login required.</p>
       <div class="grid" id="arcgis-cards"></div>
     </section>
 
@@ -122,7 +122,7 @@ signal (when DIOS present) = 0.70·DIOS_media + 0.30·climate_modes</div>
       <h2>5. Open-source &amp; methodology</h2>
       <ul class="compact">
         <li><a href="../README.md">Package README</a> — license, reproduce steps, exclusions</li>
-        <li><a href="../docs/METHOD.md">METHOD.md</a> — H×E×S weights &amp; claim boundaries</li>
+        <li><a href="../docs/METHOD.md">METHOD.md</a> — H×E×S weights</li>
         <li><a href="../docs/OFFICIAL_ALIGNMENT.md">OFFICIAL_ALIGNMENT.md</a> — web-verified gap table</li>
         <li><a href="../docs/ARCGIS_ITEMS.md">ARCGIS_ITEMS.md</a> — URL inventory</li>
         <li><a href="../scripts/build_climate_pulse_layers.py">Kenya builder script</a> · <a href="../scripts/build_climate_pulse_country.py">Multi-country builder</a></li>
@@ -131,7 +131,7 @@ signal (when DIOS present) = 0.70·DIOS_media + 0.30·climate_modes</div>
     </section>
 
     <section id="gaps">
-      <h2>6. Gaps / limitations (honest)</h2>
+      <h2>6. Gaps</h2>
       <table class="simple">
         <thead>
           <tr><th>Item</th><th>Status</th><th>Why</th></tr>
@@ -140,7 +140,7 @@ signal (when DIOS present) = 0.70·DIOS_media + 0.30·climate_modes</div>
           <tr>
             <td>Code open-sourced (package)</td>
             <td><span class="pill ok">This package ready</span></td>
-            <td>Public GitHub push still needs user to connect GitHub + create repo URL</td>
+            <td>Package files are in this repository. A public listing depends on repository visibility</td>
           </tr>
           <tr>
             <td>Sample PDP+ integration page</td>
@@ -155,7 +155,7 @@ signal (when DIOS present) = 0.70·DIOS_media + 0.30·climate_modes</div>
           <tr>
             <td>Country pilot active</td>
             <td><span class="pill gap">Not done</span></td>
-            <td>Needs UNFPA / country office engagement — cannot fake</td>
+            <td>Needs UNFPA / country office participation and evidence</td>
           </tr>
           <tr>
             <td>Multi-country Experience Builder</td>
@@ -183,8 +183,7 @@ signal (when DIOS present) = 0.70·DIOS_media + 0.30·climate_modes</div>
   </main>
 
   <footer>
-    Climate Pulse team demo · PopIntel Track 1 · MIT package under parent folder ·
-    Not an official UNFPA product. Generated for local / static hosting (file:// or GitHub Pages).
+    Climate Pulse · PopIntel Track 1 · MIT · Unofficial demo, not an UNFPA product.
   </footer>
 
   <script src="app.js"></script>
